@@ -2,6 +2,13 @@ import { pageData } from "../../../config/api";
 import FleetCom from "@/components/FleetCom";
 
 // This replaces useParams() in server components
+export async function generateStaticParams() {
+  const pageresponse = await pageData("home");
+  return pageresponse.map((fleet) => ({
+    slug: fleet?.page?.pagedata?.ourvehicles?.vehicleslug,
+  }));
+}
+
 export default async function Fleet({ params }) {
   const slug = params?.slug || "sedan";
   
