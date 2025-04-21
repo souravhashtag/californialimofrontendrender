@@ -77,6 +77,7 @@ export function FaqComponent() {
                   
                   {paginatedItems.map((item, index) => {
                     const actualIndex = (currentPage - 1) * itemsPerPage + index;
+                    // console.log("actualIndex",actualIndex)
                     return (
                       <div key={actualIndex}>
                         <h2
@@ -90,7 +91,7 @@ export function FaqComponent() {
                           }}
                           onClick={() => toggleAnswer(actualIndex)}
                         >
-                          {`${(index+1)}.  ${item.question}`}
+                          {`${(actualIndex+1)}.  ${item.question}`}
                           <i
                             className={`lni lni-chevron-${activeIndex === actualIndex ? 'up' : 'down'}-circle`}
                             style={{ float: "right" }}
