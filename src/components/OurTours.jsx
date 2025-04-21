@@ -35,7 +35,7 @@ export default function OurTours({ourTour}) {
           {ourTour?.ourtourdata ?
             ourTour?.ourtourdata?.map((val,index)=>(
               <div className="col-lg-4 col-md-6 wow fadeIn" key={index}>
-                <a href="#">
+                <a href={`/${(val.slug=="" || val.slug==="#" ?  "#":val.slug)}`}>
                   <div className="menu-pack-box">
                     <figure>
                       {" "}

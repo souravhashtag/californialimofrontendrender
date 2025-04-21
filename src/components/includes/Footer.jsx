@@ -53,22 +53,22 @@ const Footer = () => {
             <div className="col-lg-2 col-6 wow fadeIn" data-wow-delay="0.30s">
               <h6 className="widget-title"> QUICK LINKS</h6>
               <Nav className="me-auto">
-                <Nav.Link to="/about">
-                  About
-                </Nav.Link>
-                <Nav.Link to="/reservation">
-                  Reservation
-                </Nav.Link>
-                <Nav.Link to="/contact">
-                  Contact Us
-                </Nav.Link>
+                <Link href="/about-us" passHref legacyBehavior>
+                  <Nav.Link>About Us</Nav.Link>
+                </Link>
+                <Link href="/book-now" passHref legacyBehavior>
+                  <Nav.Link>Reservation</Nav.Link>
+                </Link>
+                <Link href="/contact-us" passHref legacyBehavior>
+                  <Nav.Link>Contact Us</Nav.Link>
+                </Link>
               </Nav>
             </div>
 
             <div className="col-12 wow fadeIn">
               <div className="footer-bottom">
                 {" "}
-                <span>© 2024 California Limo Wine Tour </span>{" "}
+                <span>© {new Date().getFullYear()} California Limo Wine Tour </span>{" "}
                 <span>
                   Maintained by{" "}
                   <a href="https://www.hashtagbizsolutions.com" target="_blank">

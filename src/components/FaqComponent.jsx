@@ -10,7 +10,7 @@ export function FaqComponent() {
   const [paginatedItems, setPaginatedItems] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
 
-  const itemsPerPage = 5;
+  const itemsPerPage = 10;
 
   const toggleAnswer = (index) => {
     setActiveIndex(prevIndex => prevIndex === index ? null : index);
@@ -34,7 +34,7 @@ export function FaqComponent() {
     const fetchData = async () => {
       try {
         const response = await getFaqList();
-        console.log("response==>",response);
+        //console.log("response==>",response);
         setFaqItems(response);
         paginateData(response);
       } catch (error) {
