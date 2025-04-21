@@ -34,6 +34,7 @@ export function FaqComponent() {
     const fetchData = async () => {
       try {
         const response = await getFaqList();
+        console.log("response==>",response);
         setFaqItems(response);
         paginateData(response);
       } catch (error) {
