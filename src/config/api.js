@@ -25,3 +25,12 @@ export const BlogDetails = async () => {
     throw error;
   }
 };
+
+export const FaqList = async () => {
+    try {
+      const response = await apiClient.get('/faq/');
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+};
