@@ -6,7 +6,7 @@ import dayjs from "dayjs";
 async function getPageData() {
   //return await pageData("blog");
 }
-export async function generateStaticParams() {
+export async function generateStaticParams({ params }) {
   const blogs = await ListBlog();
   return blogs.map((blog) => ({
     slug: blog.blogurl,

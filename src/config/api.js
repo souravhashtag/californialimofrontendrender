@@ -11,7 +11,9 @@ export const pageData = async (slug) => {
 };
 export const ListBlog = async () => {
   try {
-    const response = await apiClient.get('/blog/');
+    const response = await apiClient.get('/blog/',{
+      cache: "no-store" 
+    });
     return response.data;
   } catch (error) {
     throw error;
