@@ -15,13 +15,14 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const slug = params?.slug ?? "";
   const pageresponse = await BlogDetails(slug);
+  // console.log(pageresponse);return false
 
   return {
-    title: pageresponse[0]?.metatitle || "",
-    description: pageresponse[0]?.metadescription || "",
-    keywords: pageresponse[0]?.metakeyword || "",
+    title: pageresponse?.metatitle || "",
+    description: pageresponse?.metadescription || "",
+    keywords: pageresponse?.metakeyword || "",
     alternates: {
-      canonical: pageresponse[0]?.canonical || "",
+      canonical: pageresponse?.canonical || "",
     },
   };
 }
@@ -35,34 +36,34 @@ export default async function BlogDetailsPage({ params }) {
       <section className="blog-details">
         <header className="page-header" data-stellar-background-ratio="0.8">
           <div className="container">
-            <h1>{pageresponse[0]?.title}</h1>
+            <h1>{pageresponse?.title}</h1>
           </div>
         </header>
         <div className="content-section container">
           <div className="row">
             <div className="col-sm-12">
               {/* <img
-                src={pageresponse[0].banner}
-                alt={pageresponse[0].title}
+                src={pageresponse.banner}
+                alt={pageresponse.title}
                 className="img-responsive"
               /> */}
               <img
-                src={pageresponse[0].bannerurl}
-                alt={pageresponse[0].title}
-                title={pageresponse[0].title}
+                src={pageresponse.bannerurl}
+                alt={pageresponse.title}
+                title={pageresponse.title}
                 className="img-responsive"
               />
               <div className="blog-details-content">
                 <span>
-                  {dayjs(pageresponse[0].blogdate).format("D, MMMM, YYYY")}
+                  {dayjs(pageresponse.blogdate).format("D, MMMM, YYYY")}
                 </span>
-                <h1>{pageresponse[0]?.title}</h1>
+                <h1>{pageresponse?.title}</h1>
                 <div className="blog-footer">
                   <b>by Steak House</b>
                 </div>
                 <div
   className="html-content"
-  dangerouslySetInnerHTML={{ __html: pageresponse[0].content.trim() }}
+  dangerouslySetInnerHTML={{ __html: pageresponse.content.trim() }}
 /> 
               </div>
             </div>

@@ -17,9 +17,9 @@ export const ListBlog = async () => {
     throw error;
   }
 };
-export const BlogDetails = async () => {
+export const BlogDetails = async (url) => {
   try {
-    const response = await apiClient.get('/blog/');
+    const response = await apiClient.get(`/blog/${url}`);
     return response.data;
   } catch (error) {
     throw error;
