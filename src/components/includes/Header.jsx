@@ -20,7 +20,7 @@ const Header = () => {
     if (offset > 50) {
       setScrolled(true);
     } else {
-      setScrolled(false);
+      setScrolled(false); 
     }
   };
 
