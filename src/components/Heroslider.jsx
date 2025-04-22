@@ -20,7 +20,7 @@ const Heroslider = ({sliderData}) => {
 
   return (
     <>
-      {console.log("sliderData===>",sliderData)}
+      {/* {console.log("sliderData===>",sliderData)} */}
       <div className="hero-banner">
         <OwlCarousel
           className="owl-theme"

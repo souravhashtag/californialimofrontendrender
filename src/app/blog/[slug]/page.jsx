@@ -12,15 +12,16 @@ export async function generateStaticParams() {
     slug: blog.blogurl,
   }));
 }
-export async function generateMetadata() {
-  const response = await getPageData();
+export async function generateMetadata({ params }) {
+  const slug = params?.slug ?? "";
+  const pageresponse = await BlogDetails(slug);
 
   return {
-    title: response?.seo?.title || "",
-    description: response?.seo?.description || "",
-    keywords: response?.seo?.keywords || "",
+    title: pageresponse[0]?.metatitle || "",
+    description: pageresponse[0]?.metadescription || "",
+    keywords: pageresponse[0]?.metakeyword || "",
     alternates: {
-      canonical: response?.seo?.canonical || "",
+      canonical: pageresponse[0]?.canonical || "",
     },
   };
 }
@@ -28,7 +29,7 @@ export async function generateMetadata() {
 export default async function BlogDetailsPage({ params }) {
   const slug = params?.slug ?? "";
   const pageresponse = await BlogDetails(slug);
-  console.log(pageresponse);
+  // console.log(pageresponse);
   return (
     <div>
       <section className="blog-details">
@@ -40,9 +41,15 @@ export default async function BlogDetailsPage({ params }) {
         <div className="content-section container">
           <div className="row">
             <div className="col-sm-12">
-              <img
+              {/* <img
                 src={pageresponse[0].banner}
                 alt={pageresponse[0].title}
+                className="img-responsive"
+              /> */}
+              <img
+                src={pageresponse[0].bannerurl}
+                alt={pageresponse[0].title}
+                title={pageresponse[0].title}
                 className="img-responsive"
               />
               <div className="blog-details-content">

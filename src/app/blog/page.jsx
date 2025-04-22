@@ -34,7 +34,8 @@ export default async function Blog() {
                 <div className="row">
                 {pageresponse?.map((post,index) => (
                     <div key={index} className="col-sm-4 blog-list">
-                    <img src={post.banner} alt={post.title} className="img-responsive"  />
+                    {/* <img src={post.banner} alt={post.title} className="img-responsive"  /> */}
+                    <img src={post.bannerurl} alt={post.title} title={post.title} className="img-responsive"  />
                     <div className="blog-list-content">
                       <span>{dayjs(post.blogdate).format("D, MMMM, YYYY")}</span>
                         <div className="title rainbow">
