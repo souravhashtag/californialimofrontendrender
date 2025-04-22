@@ -16,7 +16,7 @@ export async function generateMetadata() {
     },
   };
 }
-
+ 
 // Server Component
 export default async function Blog() {
   const pageresponse = await ListBlog();
