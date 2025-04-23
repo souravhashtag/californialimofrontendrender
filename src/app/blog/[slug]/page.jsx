@@ -2,7 +2,6 @@ import { BlogDetails,ListBlog } from "../../../config/api";
 import Link from "next/link";
 import Image from "next/image";
 import dayjs from "dayjs";
-import he from "he";
 
 async function getPageData() {
   //return await pageData("blog");
@@ -19,9 +18,9 @@ export async function generateMetadata({ params }) {
   // console.log(pageresponse);return false
 
   return {
-    title: he.decode(pageresponse?.metatitle || ""),
-    description: he.decode(pageresponse?.metadescription || ""),
-    keywords: he.decode(pageresponse?.metakeyword || ""),
+    title: pageresponse?.metatitle || "",
+    description: pageresponse?.metadescription || "",
+    keywords: pageresponse?.metakeyword || "",
     alternates: {
       canonical: pageresponse?.canonical || "",
     },
