@@ -48,7 +48,7 @@ export default async function Blog() {
                     </Link>
                   </div>
                   <div className="blog-footer">
-                    <b> by Steak House</b>
+                    <b> by Steak House</b> 
                   </div>
                 </div>
               </div>
