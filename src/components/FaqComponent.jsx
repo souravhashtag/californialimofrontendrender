@@ -15,17 +15,17 @@ export function FaqComponent() {
   const toggleAnswer = (index) => {
     setActiveIndex(prevIndex => prevIndex === index ? null : index);
   };
-  
+
   // Function to calculate and set paginated data
   const paginateData = (items) => {
     const total = Math.ceil(items.length / itemsPerPage);
     setTotalPages(total);
-    
+
     const paginated = items.slice(
       (currentPage - 1) * itemsPerPage,
       currentPage * itemsPerPage
     );
-    
+
     setPaginatedItems(paginated);
   };
 
@@ -43,10 +43,10 @@ export function FaqComponent() {
         paginateData(sampleFaqItems);
       }
     };
-    
+
     fetchData();
   }, []);
-  
+
   useEffect(() => {
     paginateData(faqItems);
   }, [currentPage, faqItems]);
@@ -74,7 +74,7 @@ export function FaqComponent() {
             <div className="col-lg-12 col-md-12">
               <div className="elementskit-post-image-card" style={{ margin: "0px" }}>
                 <div className="elementskit-post-body">
-                  
+
                   {paginatedItems.map((item, index) => {
                     const actualIndex = (currentPage - 1) * itemsPerPage + index;
                     // console.log("actualIndex",actualIndex)
@@ -87,17 +87,34 @@ export function FaqComponent() {
                             backgroundColor: "#eee",
                             borderRadius: "18px",
                             cursor: "pointer",
-                            marginBottom: activeIndex === actualIndex ? "0" : "10px"
+                            marginBottom: activeIndex === actualIndex ? "0" : "10px",
+                            display: "flex",
+                            justifyContent: "space-between",
+                            alignItems: "center",
                           }}
                           onClick={() => toggleAnswer(actualIndex)}
                         >
-                          {`${(actualIndex+1)}.  ${item.question}`}
-                          <i
-                            className={`lni lni-chevron-${activeIndex === actualIndex ? 'up' : 'down'}-circle`}
-                            style={{ float: "right" }}
-                            aria-hidden="true"
-                          ></i>
+                          {`${actualIndex + 1}. ${item.question}`}
+
+                          {/* Inline SVG arrow */}
+                          <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            style={{
+                              transform: activeIndex === actualIndex ? "rotate(180deg)" : "rotate(0deg)",
+                              transition: "transform 0.3s ease",
+                            }}
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <path d="M6 9l6 6 6-6" />
+                          </svg>
                         </h2>
+
                         <div
                           className="btn-wraper answer"
                           style={{
