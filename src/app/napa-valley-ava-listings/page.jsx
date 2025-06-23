@@ -1,20 +1,20 @@
 import { pageData } from "../../config/api"; 
 
-async function getPageData() {
-  return await pageData("napa valley ava listings");
-}
+// async function getPageData() {
+//   return await pageData("napa valley ava listings");
+// }
 
-export async function generateMetadata() {
-  const response = await getPageData(); 
-  return {
-    title: response?.seo?.title || "Napa Valley Ava Listings | Fleet | California Limo Wine Tours",
-    description: response?.seo?.description || "Experience Luxury Group Wine tour limousine service in Napa Valley with comfortable and luxury car and limo service for a group wine tour. Call @ 877-359-3256",
-    keywords: response?.seo?.keywords || "",
-    alternates: {
-      canonical: response?.seo?.canonical || "https://www.californialimowinetours.com/napa-valley-ava-listings",
-    },
-  };
-}
+// export async function generateMetadata() {
+//   const response = await getPageData(); 
+//   return {
+//     title: response?.seo?.title || "Napa Valley Ava Listings | Fleet | California Limo Wine Tours",
+//     description: response?.seo?.description || "Experience Luxury Group Wine tour limousine service in Napa Valley with comfortable and luxury car and limo service for a group wine tour. Call @ 877-359-3256",
+//     keywords: response?.seo?.keywords || "",
+//     alternates: {
+//       canonical: response?.seo?.canonical || "https://www.californialimowinetours.com/napa-valley-ava-listings",
+//     },
+//   };
+// }
 
 
 export default function NapavalleyAva() {

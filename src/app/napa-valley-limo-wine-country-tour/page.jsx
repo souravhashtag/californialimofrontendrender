@@ -2,22 +2,22 @@ import { pageData } from "../../config/api";
 import Link from "next/link";
 import Image from "next/image";
 
-async function getPageData() {
-  return await pageData("napa-valley-limo-wine-country-tour");
-}
+// async function getPageData() {
+//   return await pageData("napa-valley-limo-wine-country-tour");
+// }
 
-export async function generateMetadata() {
-  const response = await getPageData(); 
+// export async function generateMetadata() {
+//   const response = await getPageData(); 
 
-  return {
-    title: response?.seo?.title || "Napa Valley Wine Country Tour | California Limo Wine Tours",
-    description: response?.seo?.description || "California Limo Wine tours provides Luxury Limo car according to your Group for Napa Valley Wine Country Tour. Book now at +1 877-359-3256",
-    keywords: response?.seo?.keywords || "Napa Valley Wine Country Tour wine tours , Limo service for Napa Valley Wine Country Tour wine tours , Napa Valley Wine Country Tour group wine tours , Custom wine tour Napa Valley Wine Country Tour, Napa Valley Wine Country Tour wine testing tour , Wine",
-    alternates: {
-      canonical: response?.seo?.canonical || "https://www.californialimowinetours.com/napa-valley-limo-wine-country-tour",
-    },
-  };
-}
+//   return {
+//     title: response?.seo?.title || "Napa Valley Wine Country Tour | California Limo Wine Tours",
+//     description: response?.seo?.description || "California Limo Wine tours provides Luxury Limo car according to your Group for Napa Valley Wine Country Tour. Book now at +1 877-359-3256",
+//     keywords: response?.seo?.keywords || "Napa Valley Wine Country Tour wine tours , Limo service for Napa Valley Wine Country Tour wine tours , Napa Valley Wine Country Tour group wine tours , Custom wine tour Napa Valley Wine Country Tour, Napa Valley Wine Country Tour wine testing tour , Wine",
+//     alternates: {
+//       canonical: response?.seo?.canonical || "https://www.californialimowinetours.com/napa-valley-limo-wine-country-tour",
+//     },
+//   };
+// }
 
 export default function NapavalleyTour() {
     return (

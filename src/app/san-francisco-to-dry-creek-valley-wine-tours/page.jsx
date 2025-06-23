@@ -2,22 +2,22 @@ import { pageData } from "../../config/api";
 import Link from "next/link";
 import Image from "next/image";
 
-async function getPageData() {
-  return await pageData("san-francisco-to-dry-creek-valley-wine-tours");
-}
+// async function getPageData() {
+//   return await pageData("san-francisco-to-dry-creek-valley-wine-tours");
+// }
 
-export async function generateMetadata() {
-  const response = await getPageData(); 
+// export async function generateMetadata() {
+//   const response = await getPageData(); 
 
-  return {
-    title: response?.seo?.title || "San Francisco to Dry Creek valley | California Limo Wine Tours",
-    description: response?.seo?.description || "For the ultimate Italian experience pair a Dry Creek Valley wine with a pizza with our luxury car service.",
-    keywords: response?.seo?.keywords || "",
-    alternates: {
-      canonical: response?.seo?.canonical || "https://www.californialimowinetours.com/san-francisco-to-dry-creek-valley-wine-tours",
-    },
-  };
-}
+//   return {
+//     title: response?.seo?.title || "San Francisco to Dry Creek valley | California Limo Wine Tours",
+//     description: response?.seo?.description || "For the ultimate Italian experience pair a Dry Creek Valley wine with a pizza with our luxury car service.",
+//     keywords: response?.seo?.keywords || "",
+//     alternates: {
+//       canonical: response?.seo?.canonical || "https://www.californialimowinetours.com/san-francisco-to-dry-creek-valley-wine-tours",
+//     },
+//   };
+// }
 
 export default function SanFranciscoToDryCreekValleyWineTours() {
     return (
