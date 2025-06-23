@@ -411,7 +411,7 @@ a.bookbtn:hover {
 	right: 0;
 	bottom: 0;
 	background: #c58f59;
-	animation: first-transition 1s;
+	animation: first-transition 2s;
 	animation-fill-mode: forwards;
 }
  @keyframes first-transition {
@@ -430,7 +430,7 @@ a.bookbtn:hover {
 	left: 0;
 	top: 0;
 	background: #c58f59;
-	transition: all ease 1s;
+	transition: all ease 2s;
 }
 .page-transition.active {
 	height: 100%;

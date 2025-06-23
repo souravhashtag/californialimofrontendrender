@@ -171,7 +171,7 @@ const Header = () => {
                   onClick={() => (window.location.href = "tel:8773593256")}
                   style={{ color: "white", cursor: "pointer" }}
                 >
-                 {companyData.companyPhone}
+                  {companyData.companyPhone}
                 </a>
               </p>
               <p>
