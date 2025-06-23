@@ -1,14 +1,11 @@
 import { pageData } from "../../config/api"; 
-import Link from "next/link";
-import Image from "next/image";
 
 async function getPageData() {
-  return await pageData("napa-valley-ava-listings");
+  return await pageData("napa valley ava listings");
 }
 
 export async function generateMetadata() {
   const response = await getPageData(); 
-
   return {
     title: response?.seo?.title || "Napa Valley Ava Listings | Fleet | California Limo Wine Tours",
     description: response?.seo?.description || "Experience Luxury Group Wine tour limousine service in Napa Valley with comfortable and luxury car and limo service for a group wine tour. Call @ 877-359-3256",
@@ -18,6 +15,7 @@ export async function generateMetadata() {
     },
   };
 }
+
 
 export default function NapavalleyAva() {
     return (

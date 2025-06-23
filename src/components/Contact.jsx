@@ -1,15 +1,32 @@
 "use client";
 
+import { getCompany } from "@/config/api";
 import React from "react";
 import { useEffect } from "react";
 
-export function Contact () {
+export function Contact() {
+  const [companyData, setCompanyData] = React.useState("");
+
+
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://quotes.eckolimo.com/quote-widget-script/8";
     script.async = true;
     document.getElementById("ssiframecontainerwidget8").appendChild(script);
+    async function loadData() {
+      try {
+        const data = await getCompany();
+        setCompanyData(data);
+      } catch (err) {
+        console.error("Failed to load company data", err);
+      }
+    }
+
+    loadData();
   }, []);
+
+
+
 
   return (
     <>
@@ -30,7 +47,7 @@ export function Contact () {
                   <img src="../assets/images/icon-contact01.png" alt="Image" />
                 </figure>
                 <h6>Address</h6>
-                <p>1959 O'Toole Way, San Jose CA 95131</p>
+                <p> {companyData.companyAddress}</p>
               </div>
               {/* end contact-box */}
             </div>
@@ -50,7 +67,7 @@ export function Contact () {
                 </figure>
                 <h6>Phone</h6>
                 <p>
-                  +1 877-359-3256 <br /> for booking
+                  +1 {companyData.companyPhone} <br /> for booking
                 </p>
               </div>
               {/* end contact-box */}
@@ -71,7 +88,7 @@ export function Contact () {
                 </figure>
                 <h6>e-mail</h6>
                 <p>
-                  <a href="#">res@clwt.com</a>
+                  <a href="#">{companyData.companyEmail}</a>
                   <br />
                   for e-booking &amp; all
                 </p>
