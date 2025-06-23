@@ -7,6 +7,7 @@ async function getPageData() {
 
 export async function generateMetadata() {
   const response = await getPageData(); 
+  console.log("Response from getPageData:", response);
 
   return {
     title: response?.seo?.title || "Home",
