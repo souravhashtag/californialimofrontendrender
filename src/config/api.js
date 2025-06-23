@@ -36,3 +36,13 @@ export const FaqList = async () => {
       throw error;
     }
 };
+
+// Fetch company details
+export const getCompany = async () => {
+  try {
+    const res = await apiClient.get('/company');
+    return res.data.company;
+  } catch (error) {
+    throw error;
+  }
+};

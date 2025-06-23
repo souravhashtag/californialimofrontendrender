@@ -6,21 +6,23 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Link from "next/link";
+import { getCompany } from "@/config/api";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [companyData, setCompanyData] = useState("");
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
 
-   const [scrolled, setScrolled] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const handleScroll = () => {
     const offset = window.scrollY;
     if (offset > 50) {
       setScrolled(true);
     } else {
-      setScrolled(false); 
+      setScrolled(false);
     }
   };
 
@@ -37,6 +39,20 @@ const Header = () => {
     headerClasses.push("scrolled");
   }
 
+
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const data = await getCompany();
+        setCompanyData(data);
+      } catch (err) {
+        console.error("Failed to load company data", err);
+      }
+    }
+
+    loadData();
+  }, []);
+
   return (
     <>
       <div className="first-transition"></div>
@@ -46,7 +62,7 @@ const Header = () => {
         <Navbar expand="lg" className="bg-body-tertiaryx">
           <Link href="/" passHref legacyBehavior>
             <Navbar.Brand>
-              <img src={`${process.env.NEXT_PUBLIC_IMG_FOLDER}logo.png`} alt="Logo" />
+              <img src={companyData.companyLogo} alt="Logo" />
             </Navbar.Brand>
           </Link>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -108,7 +124,7 @@ const Header = () => {
                 <Link href="/fleet/mini-coaches" passHref legacyBehavior>
                   <NavDropdown.Item>Mini Coaches</NavDropdown.Item>
                 </Link>
-                
+
               </NavDropdown>
               <Link href="/gallery" passHref legacyBehavior>
                 <Nav.Link>Gallery</Nav.Link>
@@ -136,7 +152,7 @@ const Header = () => {
             </p>
 
             <div className="maps">
-              <iframe
+              {/* <iframe
                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d51952563.63570164!2d-121.950824!3d37.367766!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8bebd2bf504e53bb%3A0xf29be080bd07bfef!2sEcko%20Worldwide%20Transportation%20-%20Luxury%20Limousine%20Chauffeured%20Service%20In%20Santa%20Clara!5e0!3m2!1sen!2sin!4v1724739183050!5m2!1sen!2sin"
                 width="300"
                 height="200"
@@ -145,28 +161,28 @@ const Header = () => {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Google Map"
-              ></iframe>
+              ></iframe> */}
             </div>
             <div className="adrs">
               <h6>Address</h6>
-              <p>2576 Lafayette St, Santa Clara, CA 95050, United States.</p>
+              <p>{companyData.companyAddress}</p>
               <p>
                 <a
                   onClick={() => (window.location.href = "tel:8773593256")}
                   style={{ color: "white", cursor: "pointer" }}
                 >
-                  +1 877-359-3256
+                  {companyData.companyPhone}
                 </a>
               </p>
               <p>
                 <a
                   onClick={() =>
-                    (window.location.href =
-                      "mailto:res@californialimowinetours.com")
+                  (window.location.href =
+                    "mailto:res@californialimowinetours.com")
                   }
                   style={{ cursor: "pointer" }}
                 >
-                  res@californialimowinetours.com
+                  {companyData.companyEmail}
                 </a>
               </p>
             </div>
@@ -219,7 +235,7 @@ const Header = () => {
             </ul>
           </div>
 
-          
+
         </Navbar>
       </header>
     </>

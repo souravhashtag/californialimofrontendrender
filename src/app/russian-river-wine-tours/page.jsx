@@ -27,13 +27,18 @@ export async function generateMetadata() {
   };
 }
 
-export default function RussianRiver() {
+export default async function RussianRiver() {
+  const response = await getPageData();
+  // const content = response?.page.pagedata?.content || "";
+  const title = response?.page.page || "Title";
+  const sub = response?.page.pagedata.subheader || "sub";
+  const tours = response?.page.pagedata.gallery || "gallery";
   return (
     <div>
       <header className="page-header" data-stellar-background-ratio="0.8">
         <div className="container">
-          <h1>RUSSIAN RIVER VALLEY </h1>
-          <h6>ROLLING HILLS - ANCIENT REDWOODS</h6>
+          <h1>{title}</h1>
+          <h6>{sub}</h6>
         </div>
       </header>
       <section
@@ -44,55 +49,24 @@ export default function RussianRiver() {
           <section className="content-section no-spacing">
             <div className="container-fluid">
               <div className="row justify-content-center">
-                <div className="col-lg-6 col-md-6 wow fadeIn">
-                  <Link href="/russian-river-valley-wine-tours">
-                    <div className="menu-pack-box">
-                      <figure>
-                        {" "}
-                        <img
-                          src="../assets/images/menu-pack-thumb05.jpg"
-                          alt="Image"
-                        />{" "}
-                      </figure>
-                      <div className="content">
-                        <h5>Russian River Valley Wine Tours</h5>
-                        <ul>
-                          <li>
-                            russian river valley rolling hills - ancient
-                            redwoods…
-                          </li>
-                        </ul>
+                {tours.map((tour, index) => (
+                  <div className="col-lg-6 col-md-6 wow fadeIn" key={index}>
+                    <Link href={tour.url}>
+                      <div className="menu-pack-box">
+                        <figure>
+                          <img src={tour.url} alt={tour.title} />
+                        </figure>
+                        <div className="content">
+                          <h5>{tour.head}</h5>
+                          <ul>
+                            <li>{tour.subhead}</li>
+                          </ul>
+                        </div>
                       </div>
-                      {/* end content */}
-                    </div>
-                  </Link>
-                  {/* end menu-pack-box */}
-                </div>
-                <div className="col-lg-6 col-md-6 wow fadeIn">
-                  <Link href="/san-francisco-to-russian-river-valley-wine-tours">
-                    <div className="menu-pack-box">
-                      <figure>
-                        {" "}
-                        <img
-                          src="../assets/images/menu-pack-thumb10.jpg"
-                          alt="Image"
-                        />{" "}
-                      </figure>
-                      <div className="content">
-                        <h5>
-                          San Francisco To Russian River Valley Wine Tours
-                        </h5>
-                        <ul>
-                          <li>
-                            Russian River Wine Tours - Premier Wine Regions
-                            Pinot Noir - Popular Wine – 9 Hour Day – The Russian
-                            River Valley Is Quickly Becoming…
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </Link>
-                </div>
+                    </Link>
+                  </div>
+                ))}
+
               </div>
             </div>
           </section>

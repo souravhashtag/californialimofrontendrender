@@ -1,10 +1,25 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 
 import Nav from "react-bootstrap/Nav";
+import { getCompany } from "@/config/api";
 
 const Footer = () => {
+  const [companyData, setCompanyData] = React.useState("");
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const data = await getCompany();
+        setCompanyData(data);
+      } catch (err) {
+        console.error("Failed to load company data", err);
+      }
+    }
+
+    loadData();
+  }, []);
+
   return (
     <div>
       <footer className="footer">
@@ -15,7 +30,7 @@ const Footer = () => {
                 {" "}
                 <a href="#">
                   {" "}
-                  <img src="../assets/images/logo.png" alt="Image" />{" "}
+                  <img src={companyData.companyLogo} alt="Image" />{" "}
                 </a>{" "}
               </div>
               <p>
@@ -35,17 +50,17 @@ const Footer = () => {
                 <li>
                   <b>Adress:</b>
                   <br />
-                  2576 Lafayette St, Santa Clara, CA 95050, United States.
+                  {companyData.companyAddress}
                 </li>
                 <li>
                   <b>Phone:</b>
                   <br />
-                  877-359-3256{" "}
+                  {companyData.companyPhone}{" "}
                 </li>
                 <li>
                   <b>Email:</b>
                   <br />
-                  res@clwt.com
+                  {companyData.companyEmail}
                 </li>
               </ul>
             </div>

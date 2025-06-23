@@ -4,7 +4,7 @@ const apiClient = axios.create({
 });
 
 apiClient.interceptors.request.use((config) => {
-    config.headers.AuthorizeToken = `V1@FrontAppV1`;  
+    config.headers.AuthorizeToken = process.env.NEXT_PUBLIC_FRONTEND_AUTH_TOKEN || '';  
     return config;
 });
 

@@ -2,6 +2,7 @@
 import OurVehicles from "@/components/OurVehicles";
 
 export default function FleetCom({ pageresponse }) {
+  console.log(pageresponse)
   return (    
     <div>        
       <header className="page-header" data-stellar-background-ratio="0.8">
