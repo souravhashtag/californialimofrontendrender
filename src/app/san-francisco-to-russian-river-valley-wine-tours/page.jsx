@@ -2,22 +2,22 @@ import { pageData } from "../../config/api";
 import Link from "next/link";
 import Image from "next/image";
 
-async function getPageData() {
-  return await pageData("san-francisco-to-russian-river-valley-wine-tours");
-}
+// async function getPageData() {
+//   return await pageData("san-francisco-to-russian-river-valley-wine-tours");
+// }
 
-export async function generateMetadata() {
-  const response = await getPageData(); 
+// export async function generateMetadata() {
+//   const response = await getPageData(); 
 
-  return {
-    title: response?.seo?.title || "San Francisco Wine Tours | California Limo Wine Tours",
-    description: response?.seo?.description || "Limo and car services for San Francisco to  Russian River Valley wine tour. call us at 877-359-3256 for instant booking",
-    keywords: response?.seo?.keywords || "",
-    alternates: {
-      canonical: response?.seo?.canonical || "https://www.californialimowinetours.com/san-francisco-to-russian-river-valley-wine-tours",
-    },
-  };
-}
+//   return {
+//     title: response?.seo?.title || "San Francisco Wine Tours | California Limo Wine Tours",
+//     description: response?.seo?.description || "Limo and car services for San Francisco to  Russian River Valley wine tour. call us at 877-359-3256 for instant booking",
+//     keywords: response?.seo?.keywords || "",
+//     alternates: {
+//       canonical: response?.seo?.canonical || "https://www.californialimowinetours.com/san-francisco-to-russian-river-valley-wine-tours",
+//     },
+//   };
+// }
 
 export default function San_francisco_to_russian_river_valley_wine_tours()  {
     return (
