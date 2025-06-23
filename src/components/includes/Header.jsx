@@ -69,7 +69,7 @@ const Header = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Link href="/" passHref legacyBehavior>
-                <a href="/">Home</a>
+                <Nav.Link>Home</Nav.Link>
               </Link>
               <Link href="/about-us" passHref legacyBehavior>
                 <Nav.Link>About Us</Nav.Link>
