@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { pageData } from "../../config/api";
 import parse from "html-react-parser";
 
