@@ -3017,8 +3017,9 @@ font-size: 60px;
   .navbar .dropdown:hover .dropdown-menu {
 	display: block;
   }
-  a.navbar-brand img {
-    width: 310px;
+ 
+a.navbar-brand img {
+    width: 210px;
 }
 .navbar-expand-lg .navbar-collapse {
 

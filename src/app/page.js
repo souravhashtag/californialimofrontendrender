@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import HomeComponent from "@/components/Home";
 import { pageData } from "../config/api"; 
 
@@ -7,6 +8,7 @@ async function getPageData() {
 
 export async function generateMetadata() {
   const response = await getPageData(); 
+  console.log("Generating metadata for Home page", response);
 
   return {
     title: response?.seo?.title || "Home",
@@ -20,6 +22,7 @@ export async function generateMetadata() {
 
 export default async function Home() {
   const response = await getPageData(); 
+  await generateMetadata()
   return (
     <>
       <HomeComponent page={response.page} />

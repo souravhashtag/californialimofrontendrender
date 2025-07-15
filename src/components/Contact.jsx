@@ -9,10 +9,27 @@ export function Contact() {
 
 
   useEffect(() => {
+    // Load external widget script
     const script = document.createElement("script");
     script.src = "https://quotes.eckolimo.com/quote-widget-script/8";
     script.async = true;
-    document.getElementById("ssiframecontainerwidget8").appendChild(script);
+    const container = document.getElementById("ssiframecontainerwidget8");
+    if (container) {
+      container.appendChild(script);
+    }
+
+    // Setup auto-height adjustment for iframe
+    function receiveMessage(event) {
+      // Optional: Validate event.origin if needed
+      const iframe = document.getElementById("your-iframe-id");
+      if (iframe && !isNaN(event.data)) {
+        iframe.style.height = `${event.data}px`;
+      }
+    }
+
+    window.addEventListener("message", receiveMessage, false);
+
+    // Load company data
     async function loadData() {
       try {
         const data = await getCompany();
@@ -23,7 +40,13 @@ export function Contact() {
     }
 
     loadData();
+
+    // Cleanup on unmount
+    return () => {
+      window.removeEventListener("message", receiveMessage);
+    };
   }, []);
+
 
 
 

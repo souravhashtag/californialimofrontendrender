@@ -1,3 +1,5 @@
+
+export const dynamic = 'force-dynamic';
 import { pageData } from "../../config/api"; 
 
 // async function getPageData() {

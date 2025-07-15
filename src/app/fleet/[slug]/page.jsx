@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { pageData } from "../../../config/api";
 import FleetCom from "@/components/FleetCom";
 
