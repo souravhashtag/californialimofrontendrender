@@ -129,7 +129,7 @@ const Header = () => {
               <Link href="/gallery" passHref legacyBehavior>
                 <Nav.Link>Gallery</Nav.Link>
               </Link>
-              <Link href="/blog" passHref legacyBehavior>
+              <Link href="/blog-details" passHref legacyBehavior>
                 <Nav.Link>Blog</Nav.Link>
               </Link>
               <Link href="/faq" passHref legacyBehavior>

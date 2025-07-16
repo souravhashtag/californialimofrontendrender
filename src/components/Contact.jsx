@@ -8,44 +8,49 @@ export function Contact() {
   const [companyData, setCompanyData] = React.useState("");
 
 
-  useEffect(() => {
-    // Load external widget script
-    const script = document.createElement("script");
-    script.src = "https://quotes.eckolimo.com/quote-widget-script/8";
-    script.async = true;
-    const container = document.getElementById("ssiframecontainerwidget8");
-    if (container) {
-      container.appendChild(script);
+useEffect(() => {
+  // 1. Load company data
+  async function loadData() {
+    try {
+      const data = await getCompany();
+      setCompanyData(data);
+    } catch (err) {
+      console.error("Failed to load company data", err);
     }
+  }
+  loadData();
 
-    // Setup auto-height adjustment for iframe
-    function receiveMessage(event) {
-      // Optional: Validate event.origin if needed
+  // 2. Create and append the iframe
+  const iframe = document.createElement("iframe");
+  iframe.src = "https://eckolimo.quotehives.com/public/quote.php?id=5";
+  iframe.id = "your-iframe-id";
+  iframe.style.width = "100%";
+  iframe.style.border = "none";
+  iframe.setAttribute("scrolling", "no");
+
+  const container = document.getElementById("ssiframecontainerwidget8");
+  if (container) {
+    container.appendChild(iframe);
+  }
+
+  // 3. Auto-height adjustment for iframe
+  function receiveMessage(event) {
+    if (!isNaN(event.data)) {
       const iframe = document.getElementById("your-iframe-id");
-      if (iframe && !isNaN(event.data)) {
+      if (iframe) {
         iframe.style.height = `${event.data}px`;
       }
     }
+  }
 
-    window.addEventListener("message", receiveMessage, false);
+  window.addEventListener("message", receiveMessage, false);
 
-    // Load company data
-    async function loadData() {
-      try {
-        const data = await getCompany();
-        setCompanyData(data);
-      } catch (err) {
-        console.error("Failed to load company data", err);
-      }
-    }
+  // 4. Cleanup on unmount
+  return () => {
+    window.removeEventListener("message", receiveMessage);
+  };
+}, []);
 
-    loadData();
-
-    // Cleanup on unmount
-    return () => {
-      window.removeEventListener("message", receiveMessage);
-    };
-  }, []);
 
 
 

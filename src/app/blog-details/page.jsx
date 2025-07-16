@@ -44,7 +44,7 @@ export default async function Blog() {
                 <div className="blog-list-content">
                   <span>{dayjs(post.blogdate).format("D, MMMM, YYYY")}</span>
                   <div className="title rainbow">
-                    <Link href={`/blog/${post.blogurl}`}>
+                    <Link href={`/blog-details/${post.blogurl}`}>
                       {post.title}
                     </Link>
                   </div>
