@@ -106,9 +106,13 @@ const Header = () => {
                   <NavDropdown.Item>Coombsville Tours</NavDropdown.Item>
                 </Link>
               </NavDropdown>
-              <Link href="/book-now" passHref legacyBehavior>
-                <Nav.Link>Reservation</Nav.Link>
-              </Link>
+              <Nav.Link
+                as={Link}
+                href="https://scweb-e.groundtools.com/US.CA.ECK/WebConnect/DefaultV2/Booking"
+                target="_blank"
+              >
+                Reservation
+              </Nav.Link>
               <NavDropdown title="Fleet" id="basic-nav-dropdown">
                 <Link href="/fleet/sedan" passHref legacyBehavior>
                   <NavDropdown.Item>Sedan</NavDropdown.Item>
@@ -129,7 +133,7 @@ const Header = () => {
               <Link href="/gallery" passHref legacyBehavior>
                 <Nav.Link>Gallery</Nav.Link>
               </Link>
-              <Link href="/blog" passHref legacyBehavior>
+              <Link href="/blog-details" passHref legacyBehavior>
                 <Nav.Link>Blog</Nav.Link>
               </Link>
               <Link href="/faq" passHref legacyBehavior>

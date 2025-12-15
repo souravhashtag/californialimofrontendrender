@@ -71,9 +71,9 @@ const Footer = () => {
                 <Link href="/about-us" passHref legacyBehavior>
                   <Nav.Link>About Us</Nav.Link>
                 </Link>
-                <Link href="/book-now" passHref legacyBehavior>
-                  <Nav.Link>Reservation</Nav.Link>
-                </Link>
+                  <Nav.Link as={Link}
+                    href="https://scweb-e.groundtools.com/US.CA.ECK/WebConnect/DefaultV2/Booking"
+                    target="_blank">Reservation</Nav.Link>
                 <Link href="/contact-us" passHref legacyBehavior>
                   <Nav.Link>Contact Us</Nav.Link>
                 </Link>

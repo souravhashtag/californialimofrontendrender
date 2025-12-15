@@ -32,6 +32,14 @@ export default async function BlogDetailsPage({ params }) {
   const slug = params?.slug ?? "";
   const pageresponse = await BlogDetails(slug);
   // console.log(pageresponse);
+  let bannerSrc = pageresponse.bannerurl;
+
+  // If URL already contains uploads/, use it as is
+  if (bannerSrc.includes("uploads/")) {
+    bannerSrc = bannerSrc.replace("http://", "https://"); // Force HTTPS
+  } else {
+    bannerSrc = `https://www.californialimowinetours.com/uploads/${bannerSrc}`;
+  }
   return (
     <div>
       <section className="blog-details">
@@ -49,7 +57,7 @@ export default async function BlogDetailsPage({ params }) {
                 className="img-responsive"
               /> */}
               <img
-                src={pageresponse.bannerurl}
+                src={bannerSrc}
                 alt={pageresponse.title}
                 title={pageresponse.title}
                 className="img-responsive"
