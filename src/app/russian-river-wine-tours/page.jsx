@@ -29,10 +29,13 @@ export async function generateMetadata() {
 
 export default async function RussianRiver() {
   const response = await getPageData();
-  // const content = response?.page.pagedata?.content || "";
-  const title = response?.page.page || "Title";
-  const sub = response?.page.pagedata.subheader || "sub";
-  const tours = response?.page.pagedata.gallery || "gallery";
+  const page = response?.page || { pagedata: {} };
+  // const content = page.pagedata?.content || "";
+  const title = page.page || "Title";
+  const sub = page.pagedata?.subheader || "sub";
+  const tours = Array.isArray(page.pagedata?.gallery)
+    ? page.pagedata.gallery
+    : [];
   return (
     <div>
       <header className="page-header" data-stellar-background-ratio="0.8">
