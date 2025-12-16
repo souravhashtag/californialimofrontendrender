@@ -20,9 +20,10 @@ export async function generateMetadata() {
 
 export default async function Home() {
   const response = await getPageData(); 
+  const page = response?.page || { pagedata: response?.pagedata || {} };
   return (
     <>
-      <HomeComponent page={response.page} />
+      <HomeComponent page={page} />
     </>
   );
 }
