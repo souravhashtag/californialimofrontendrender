@@ -23,10 +23,9 @@ export async function generateMetadata() {
 export default async function About() {
   const response = await getPageData();
   const banner = response?.pagedata?.banner || {};
-  const content = response?.page.pagedata?.content || "";
-  const title = response?.page.pagedata.banner.header || "About";
-  const subHeader = response?.page.pagedata.banner.subheader || "";
-  console.log(response)
+  const content = response?.page?.pagedata?.content || response?.pagedata?.content || "";
+  const title = response?.page?.pagedata?.banner?.header || response?.pagedata?.banner?.header || "About";
+  const subHeader = response?.page?.pagedata?.banner?.subheader || response?.pagedata?.banner?.subheader || "";
   return (
     <div>
       {/* Banner */}
