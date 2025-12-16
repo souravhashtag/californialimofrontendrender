@@ -42,7 +42,7 @@ export default async function SpringMountain() {
             <div
               className="col-12 wow fadeIn" >
               <div className="section-title">
-                <h2>{header}
+                <h2>{title2}
                 </h2>
 
                 <img
