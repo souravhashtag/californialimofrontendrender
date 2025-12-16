@@ -9,7 +9,7 @@ import Link from "next/link";
 import { getCompany } from "@/config/api";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [companyData, setCompanyData] = useState("");
+  const [companyData, setCompanyData] = useState({});
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
@@ -62,7 +62,11 @@ const Header = () => {
         <Navbar expand="lg" className="bg-body-tertiaryx">
           <Link href="/" passHref legacyBehavior>
             <Navbar.Brand>
-              <img src={companyData.companyLogo} alt="Logo" />
+              <img
+                src={companyData?.companyLogo || "/assets/images/logo.png"}
+                alt="Logo"
+                onError={(e) => { e.currentTarget.src = '/assets/images/logo.png'; }}
+              />
             </Navbar.Brand>
           </Link>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -169,13 +173,13 @@ const Header = () => {
             </div>
             <div className="adrs">
               <h6>Address</h6>
-              <p>{companyData.companyAddress}</p>
+              <p>{companyData?.companyAddress || ""}</p>
               <p>
                 <a
                   onClick={() => (window.location.href = "tel:8773593256")}
                   style={{ color: "white", cursor: "pointer" }}
                 >
-                  {companyData.companyPhone}
+                  {companyData?.companyPhone || "877-359-3256"}
                 </a>
               </p>
               <p>
@@ -186,7 +190,7 @@ const Header = () => {
                   }
                   style={{ cursor: "pointer" }}
                 >
-                  {companyData.companyEmail}
+                  {companyData?.companyEmail || "res@californialimowinetours.com"}
                 </a>
               </p>
             </div>
