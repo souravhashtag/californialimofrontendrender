@@ -22,12 +22,14 @@ export async function generateMetadata() {
 
 export default async function sonomaValleyWineTours() {
     const response = await getPageData();
-    console.log(response)
-    // const content = response?.page.pagedata?.content || "";
-    const title = response?.page.page || "Title";
-    const title2 = response?.page.pagedata.header || "Title2";
-    const subtitle = response?.page.pagedata.subheader || "subtitle";
-      const content = response?.page.pagedata?.content || "";
+        const page = response?.page || { pagedata: {} };
+        // safe logging for debugging
+        // console.log(response)
+        // const content = page.pagedata?.content || "";
+        const title = page.page || "Title";
+        const title2 = page.pagedata?.header || "Title2";
+        const subtitle = page.pagedata?.subheader || "subtitle";
+        const content = page.pagedata?.content || "";
     return (
         <div>
             <header className="page-header" data-stellar-background-ratio="0.8">
