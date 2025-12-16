@@ -20,10 +20,9 @@ export async function generateMetadata() {
 
 export default async function Napavalley() {
     const response = await getPageData();
-    // const content = response?.page.pagedata?.content || "";
-    const title = response?.page.page || "Title";
-    const header = response?.page.pagedata.header || "Header";
-    const content = response?.page.pagedata?.content || "";
+    const title = response?.page?.page || response?.pagedata?.title || "Title";
+    const header = response?.page?.pagedata?.header || response?.pagedata?.header || "Header";
+    const content = response?.page?.pagedata?.content || response?.pagedata?.content || "";
     return (
         <div>
             <header className="page-header" data-stellar-background-ratio="0.8">
