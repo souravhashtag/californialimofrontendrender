@@ -63,7 +63,7 @@ const Header = () => {
           <Link href="/" passHref legacyBehavior>
             <Navbar.Brand>
               <img
-                src={companyData?.companyLogo || "/assets/images/logo.png"}
+                src="https://www.californialimowinetours.com/uploads/15logo07.webp"
                 alt="Logo"
                 onError={(e) => { e.currentTarget.src = '/assets/images/logo.png'; }}
               />
