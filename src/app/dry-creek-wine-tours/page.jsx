@@ -20,9 +20,9 @@ export async function generateMetadata() {
 
 export default async function dryCreekWineTours() {
     const response = await getPageData();
-    const title = response?.page.page || "Title";
-    const sub = response?.page.pagedata.subheader || "sub";
-    const tours = response?.page.pagedata.gallery || "gallery";
+    const title = response?.page?.page || response?.pagedata?.title || "Title";
+    const sub = response?.page?.pagedata?.subheader || response?.pagedata?.subheader || "sub";
+    const tours = response?.page?.pagedata?.gallery || response?.pagedata?.gallery || [];
     return (
         <div>
             <header className="page-header" data-stellar-background-ratio="0.8">

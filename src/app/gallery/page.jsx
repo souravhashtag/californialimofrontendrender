@@ -29,7 +29,7 @@ export default async function GalleryPage() {
           <h6> View our gallery to see photos from some of our previous wine tour adventures. We create memories that last a lifetime with our wine customized tasting experiences. </h6>
         </div>
       </header>
-      <Gallery galleryData={pageresponse?.page.pagedata?.photogallary} />
+      <Gallery galleryData={pageresponse?.page?.pagedata?.photogallary || pageresponse?.pagedata?.photogallary} />
     </div>
   )
 }
