@@ -6,7 +6,7 @@ export const pageData = async (slug) => {
     const response = await apiClient.get(`/page/${slug}`);
     return response.data; 
   } catch (error) {
-    throw error; 
+    return {};
   }
 };
 export const ListBlog = async () => {
@@ -16,7 +16,7 @@ export const ListBlog = async () => {
     });
     return response.data;
   } catch (error) {
-    throw error;
+    return [];
   }
 };
 export const BlogDetails = async (url) => {
@@ -24,7 +24,7 @@ export const BlogDetails = async (url) => {
     const response = await apiClient.get(`/blog/${url}`);
     return response.data;
   } catch (error) {
-    throw error;
+    return {};
   }
 };
 
@@ -33,7 +33,7 @@ export const FaqList = async () => {
       const response = await apiClient.get('/faq/');
       return response.data;
     } catch (error) {
-      throw error;
+      return [];
     }
 };
 
@@ -43,6 +43,6 @@ export const getCompany = async () => {
     const res = await apiClient.get('/company');
     return res.data.company;
   } catch (error) {
-    throw error;
+    return null;
   }
 };

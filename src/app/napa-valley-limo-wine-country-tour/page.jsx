@@ -1,22 +1,29 @@
-import { pageData } from "../../config/api"; 
+import { pageData } from "../../config/api";
 import Link from "next/link";
 import Image from "next/image";
+import { notFound } from 'next/navigation';
 
 async function getPageData() {
-  return await pageData("napa-valley-limo-wine-country-tour");
+    try {
+        return await pageData("napa-valley-limo-wine-country-tour");
+    } catch (err) {
+        // If the API returns 404 or other error, return null so caller can handle
+        return null;
+    }
 }
 
 export async function generateMetadata() {
-  const response = await getPageData(); 
+    const response = await getPageData();
+    if (!response) return notFound();
 
-  return {
-    title: response?.seo?.title || "Napa Valley Wine Country Tour | California Limo Wine Tours",
-    description: response?.seo?.description || "California Limo Wine tours provides Luxury Limo car according to your Group for Napa Valley Wine Country Tour. Book now at +1 877-359-3256",
-    keywords: response?.seo?.keywords || "Napa Valley Wine Country Tour wine tours , Limo service for Napa Valley Wine Country Tour wine tours , Napa Valley Wine Country Tour group wine tours , Custom wine tour Napa Valley Wine Country Tour, Napa Valley Wine Country Tour wine testing tour , Wine",
-    alternates: {
-      canonical: response?.seo?.canonical || "https://www.californialimowinetours.com/napa-valley-limo-wine-country-tour",
-    },
-  };
+    return {
+        title: response?.seo?.title || "Napa Valley Wine Country Tour | California Limo Wine Tours",
+        description: response?.seo?.description || "California Limo Wine tours provides Luxury Limo car according to your Group for Napa Valley Wine Country Tour. Book now at +1 877-359-3256",
+        keywords: response?.seo?.keywords || "Napa Valley Wine Country Tour wine tours , Limo service for Napa Valley Wine Country Tour wine tours , Napa Valley Wine Country Tour group wine tours , Custom wine tour Napa Valley Wine Country Tour, Napa Valley Wine Country Tour wine testing tour , Wine",
+        alternates: {
+            canonical: response?.seo?.canonical || "https://www.californialimowinetours.com/napa-valley-limo-wine-country-tour",
+        },
+    };
 }
 
 export default function NapavalleyTour() {
